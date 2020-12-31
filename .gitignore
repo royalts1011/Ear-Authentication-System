@@ -1,0 +1,12 @@
+# Default ignored files
+/workspace.xml
+*.jpg
+*.jpeg
+*.pyc
+*.json
+.DS_Store
+.vscode/
+.idea/
+__pycache__/
+model.pt
+/runs/*
