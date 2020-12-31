@@ -1,4 +1,4 @@
-# Ear-Detector
+# This Folder contains all descriptions and files for the Ear-Detector .
 
 1. Setup virtualenv including opencv-python and numpy 
 2. earDetection.py will start the camera and just detect ears
