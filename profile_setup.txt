@@ -1,0 +1,7 @@
+# virtualenv and virtualenvwrapper
+export WORKON_HOME=$HOME/.virtualenvs
+export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+source ~/.local/bin/virtualenvwrapper.sh
+
+# python path for DLBio framework make sure that this path is correct
+export PYTHONPATH=~/Documents/Bachelorarbeit/:$PYTHONPATH
