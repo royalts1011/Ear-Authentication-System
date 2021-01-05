@@ -1,3 +1,9 @@
+"""
+    This script has a hard coded resolution of the camera and is only for testing the camera and ear detection.
+    With pressing the key 'p' while the ear detection is running the current content of the bouding box is saved.
+    This can be used for adjusting the distance of the person to the camera or controlling other variables of the process.
+"""
+
 import numpy as np
 import cv2
 
@@ -11,7 +17,6 @@ GREEN = (0,255,0)
 
 # additional space around the ear to be captured
 # 0.1 is tightly around, 0.2 more generous 
-SCALING = 0.2
 SCALING_H = 0.05
 SCALING_W = 0.2 
 

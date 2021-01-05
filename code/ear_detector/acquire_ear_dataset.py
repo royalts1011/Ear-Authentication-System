@@ -17,18 +17,41 @@ GREEN = (0,255,0)
 
 # additional space around the ear to be captured
 # 0.1 is tightly around, 0.2 more generous 
-SCALING = 0.2
 SCALING_H = 0.05
-SCALING_W = 0.2 
+SCALING_W = 0.2
 
-INSTRUCTIONS = ["\n [INFO] Initializing ear capture. Turn your head left. Your right ear should then be facing the camera.", 
-                "Look into the camera and slowly turn your head 45 degrees to the left",
-                "Now look up, keeping the right ear towards the camera.",
-                "Now look down, keeping the right ear towards the camera."
-                ]
+print(  "\n [INFO]\n",
+        "------------------------------\n",
+        "------------------------------\n",
+        "In this process {amount:} pictures will be taken. Throughout the process, the ear should be in different positions.\n".format(amount=PICTURES),
+        "Per position the detector will take {step:} continuous shots and will then wait for user interaction to initiate the next position.\n".format(step=STEP),
+        "------------------------------\n",
+        "------------------------------\n",
+        "The detected ear bounding box will have a larger height by {height:.2%} and a larger width by {width:.2%}.\n".format(height=2*SCALING_H, width=2*SCALING_W),
+        "------------------------------\n",
+        "------------------------------\n",
+        "The images will be saved in a folder in the directory '{dir:}'.\n".format(dir=DATASET_DIR),
+        "------------------------------\n",
+        "------------------------------"
+        )
+#########################################################################
+
+
+
+#########################################################################
+# [INITIAL PROCEDURE OF HEAD TURNING] 
+#         Initializing ear capture. Turn your head left. Your right ear should then be facing the camera.
+#         Look into the camera and slowly turn your head 45 degrees to the left
+#         Now look up, keeping the right ear towards the camera.
+#         Now look down, keeping the right ear towards the camera.
 #########################################################################
 # assert PICTURES/10 <= (len(user_instructions))
 
+
+"""    
+    These functions can be used to set the camera to a certain resolution.
+    The object is expected to be a cv2.VideoCapture() type.
+"""
 def make_720(object):
     object.set(cv2.CAP_PROP_FRAME_WIDTH, 1280)
     object.set(cv2.CAP_PROP_FRAME_HEIGHT, 720)
@@ -42,23 +65,43 @@ def make_240(object):
     object.set(cv2.CAP_PROP_FRAME_WIDTH, 320)
     object.set(cv2.CAP_PROP_FRAME_HEIGHT, 240)
 
+
+""" This function can be used to scale a frame by a certain percentage.
+
+    Args:
+        frame: The frame/image
+        percent: Percentual Resizing
+    Returns:
+        The resized frame
+"""
 def rescale_frame(frame, percent=75):
     width = int(frame.shape[1] * percent/ 100)
     height = int(frame.shape[0] * percent/ 100)
     dim = (width, height)
     return cv2.resize(frame, dim, interpolation = cv2.INTER_AREA)
 
-def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, margin=SCALING, is_authentification=False):
+
+""" Main function for the detection and saving the ear images,
+    If is_authentification is true, the function is used for creating new embeddings which are based on just one image.
+    The created files are deleted by the script that is calling this function.
+
+    Args:
+        amount_pic: total amount of images
+        pic_per_stage: amount of images per position
+        is_authentification: boolean if function is used for authentification
+"""
+def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, is_authentification=False):
 
     cap = cv2.VideoCapture(0)
     time.sleep(2.0)
     # open window dimensions
     make_720(cap)
 
-    ear_detector = cv2.CascadeClassifier('Cascades/haarcascade_mcs_rightear.xml')
+    ear_detector = cv2.CascadeClassifier('haarcascade_mcs_rightear.xml')
 
     # For each person, enter a new identification name
-    ear_name = input('\n Enter name end press <return> ==>  ')
+    print("The format of names should be consistent. (e.g. 'firstname_lastname' only using first three letters of the last name. --> 'max_mus'")
+    ear_name = input('\n Enter name end press <return> :\t')
 
     if not exists(DATASET_DIR):
         os.mkdir(DATASET_DIR)
@@ -66,9 +109,6 @@ def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, margin=SCALING, 
     usr_dir = (join(DATASET_DIR, ear_name), join(DATASET_DIR, (ear_name + '-auth')))[is_authentification]
     if not exists(usr_dir):
         os.mkdir(usr_dir)
-
-    print(INSTRUCTIONS[0])
-
         
     # Initialize individual sampling ear count
     count = 0
@@ -101,9 +141,6 @@ def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, margin=SCALING, 
             # display after defined set of steps 
             if (count%pic_per_stage) == 0 and count != amount_pic:
                 print("\n [INFO] Next step commencing... \n")
-                # only include when instructions are wanted
-    #             current_step = int(count / pic_per_stage)
-    #             print(INSTRUCTIONS[current_step])
                 print(count)
                 input("Reposition your head and press <return> to continue.")
 
@@ -116,7 +153,7 @@ def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, margin=SCALING, 
             break
 
 
-    # Do a bit of cleanup
+    # Close all windows and end camera
     print("\n [INFO] Exiting Program.")
     cap.release()
     cv2.destroyAllWindows()

@@ -12,9 +12,9 @@ from torch.autograd import Variable
 from torchvision.models.mobilenet import mobilenet_v2
 
 # DLBio and own scripts
-from DLBio.pytorch_helpers import get_device
 import transforms_data as td
-from helpers import cuda_conv
+from training.helpers import cuda_conv
+from training.helpers import get_device
 import metrics as M
 import acquire_ear_dataset as a
 

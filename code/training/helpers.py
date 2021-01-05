@@ -4,6 +4,7 @@
 ###################################################
 ###################################################
 import os
+import torch
 from torch import cuda
 
 # method for displaying files with index
@@ -47,3 +48,8 @@ def cuda_conv(obj):
         return obj.cuda()
     else:
         return obj
+
+# return device (cuda or cpu)
+def get_device():
+    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    return device
