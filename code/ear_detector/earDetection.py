@@ -4,7 +4,6 @@
     This can be used for adjusting the distance of the person to the camera or controlling other variables of the process.
 """
 
-import numpy as np
 import cv2
 
 earCascade = cv2.CascadeClassifier('Cascades/haarcascade_mcs_rightear.xml')

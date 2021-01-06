@@ -3,5 +3,6 @@ export WORKON_HOME=$HOME/.virtualenvs
 export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
 source ~/.local/bin/virtualenvwrapper.sh
 
-# python path for DLBio framework make sure that this path is correct
-export PYTHONPATH=~/Documents/Bachelorarbeit/:$PYTHONPATH
+# python path for the 'code' folder  -- make sure that this path is correct
+# The following line assumes, that the project is saved in HOME/Documents
+export PYTHONPATH=~Documents/Ear-Authentication-System/code:$PYTHONPATH

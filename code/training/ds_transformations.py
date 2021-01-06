@@ -1,5 +1,5 @@
 from torchvision import transforms
-import code.training.MyTransforms
+from training import cl_MyTransforms as MyTransforms
 
 
 # setting mean and std for normalization

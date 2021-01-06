@@ -51,5 +51,5 @@ def cuda_conv(obj):
 
 # return device (cuda or cpu)
 def get_device():
-    device = torch.device('cuda:0' if torch.cuda.is_available() else 'cpu')
+    device = torch.device('cuda:0' if cuda.is_available() else 'cpu')
     return device
