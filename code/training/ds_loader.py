@@ -1,10 +1,10 @@
 import torchvision
-import transforms_data as td
+import code.transforms_data as td
 from torchvision import datasets
 from torchvision import transforms
 from torch.utils.data.sampler import SubsetRandomSampler
 from torch.utils.data import DataLoader, SubsetRandomSampler, Dataset
-from siamese_network_dataset import SiameseNetworkDataset
+from code.training.siamese_bundles import SiameseNetworkDataset
 
 
 def get_dataloader(data_path, indices, transformation, batch_size=32, num_workers=0, should_invert = False):
