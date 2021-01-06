@@ -1,8 +1,8 @@
-from torch.utils.data import DataLoader,Dataset
+import torch
+from torch.utils.data import Dataset
 import random
 import numpy as np
 from PIL import Image
-import torch
 import PIL.ImageOps  
 class SiameseNetworkDataset(Dataset):
     """

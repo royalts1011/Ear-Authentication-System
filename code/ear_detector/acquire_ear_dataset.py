@@ -20,20 +20,6 @@ GREEN = (0,255,0)
 SCALING_H = 0.05
 SCALING_W = 0.2
 
-print(  "\n [INFO]\n",
-        "------------------------------\n",
-        "------------------------------\n",
-        "In this process {amount:} pictures will be taken. Throughout the process, the ear should be in different positions.\n".format(amount=PICTURES),
-        "Per position the detector will take {step:} continuous shots and will then wait for user interaction to initiate the next position.\n".format(step=STEP),
-        "------------------------------\n",
-        "------------------------------\n",
-        "The detected ear bounding box will have a larger height by {height:.2%} and a larger width by {width:.2%}.\n".format(height=2*SCALING_H, width=2*SCALING_W),
-        "------------------------------\n",
-        "------------------------------\n",
-        "The images will be saved in a folder in the directory '{dir:}'.\n".format(dir=DATASET_DIR),
-        "------------------------------\n",
-        "------------------------------"
-        )
 #########################################################################
 
 
@@ -91,6 +77,21 @@ def rescale_frame(frame, percent=75):
         is_authentification: boolean if function is used for authentification
 """
 def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, is_authentification=False):
+
+    print(  "\n [INFO]\n",
+        "------------------------------\n",
+        "------------------------------\n",
+        "In this process {amount:} pictures will be taken. Throughout the process, the ear should be in different positions.\n".format(amount=PICTURES),
+        "Per position the detector will take {step:} continuous shots and will then wait for user interaction to initiate the next position.\n".format(step=STEP),
+        "------------------------------\n",
+        "------------------------------\n",
+        "The detected ear bounding box will have a larger height by {height:.2%} and a larger width by {width:.2%}.\n".format(height=2*SCALING_H, width=2*SCALING_W),
+        "------------------------------\n",
+        "------------------------------\n",
+        "The images will be saved in a folder in the directory '{dir:}'.\n".format(dir=DATASET_DIR),
+        "------------------------------\n",
+        "------------------------------"
+        )
 
     cap = cv2.VideoCapture(0)
     time.sleep(2.0)

@@ -1,7 +1,6 @@
-from torch import cuda
 import torch.nn.functional as NNF
 from metrics import accuracy
-from training.helpers import cuda_conv
+from helpers import cuda_conv
 import csv
 
 
@@ -106,10 +105,6 @@ class Training():
         img0, img1 , label = batch
         # Type conversion
         img0, img1 , label = cuda_conv(img0), cuda_conv(img1), cuda_conv(label)
-        # if cuda.is_available():
-        #     img0, img1 , label = img0.cuda(), img1.cuda() , label.cuda()
-        # else: 
-        #     img0, img1 , label = img0, img1 , label
 
         # Throw in correct network
         if self.nn_Siamese == True:

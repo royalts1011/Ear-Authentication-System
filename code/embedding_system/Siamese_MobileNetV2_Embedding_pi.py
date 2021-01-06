@@ -4,6 +4,7 @@
 import sys
 sys.path.append('../..')
 import numpy as np
+
 # PyTorch
 import torch
 import torch.nn.functional as F
@@ -11,12 +12,12 @@ from torch import cuda
 from torch.autograd import Variable
 from torchvision.models.mobilenet import mobilenet_v2
 
-# DLBio and own scripts
+# own scripts
 from training.helpers import get_device
 from training.helpers import cuda_conv
-import transforms_data as td
-import metrics as M
-import acquire_ear_dataset as a
+import training.ds_transformations as td
+import training.metrics as M
+import ear_detector.acquire_ear_dataset as a
 
 from PIL import Image
 import glob
