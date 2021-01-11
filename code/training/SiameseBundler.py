@@ -4,7 +4,7 @@ import random
 import numpy as np
 from PIL import Image
 import PIL.ImageOps  
-class SiameseNetworkDataset(Dataset):
+class SiameseBundler(Dataset):
     """
     Class for constructing the Siamese dataset.
     The class constructs bundles/tupples of two images and a binary label. If the images of one tuple are the same, the label is set to zero

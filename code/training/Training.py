@@ -1,19 +1,18 @@
 import torch.nn.functional as NNF
-from metrics import accuracy
-from helpers import cuda_conv
+from training.metrics import accuracy
+from training.helpers import cuda_conv
 import csv
 
 
 class Training():
     def __init__(
-        self,model, optimizer, train_dataloader, loss_contrastive, nn_Siamese, val_dataloader, THRESHOLD
+        self,model, optimizer, train_dataloader, loss_contrastive, val_dataloader, THRESHOLD
     ):
         self.model = model
         self.optimizer = optimizer
         self.loss_contrastive = loss_contrastive
         self.train_dataloader = train_dataloader
         self.val_dataloader = val_dataloader
-        self.nn_Siamese = nn_Siamese
         self.THRESHOLD = THRESHOLD
 
 
@@ -106,11 +105,8 @@ class Training():
         # Type conversion
         img0, img1 , label = cuda_conv(img0), cuda_conv(img1), cuda_conv(label)
 
-        # Throw in correct network
-        if self.nn_Siamese == True:
-            output1, output2 = self.model(img0,img1)
-        else:                 
-            output1 = self.model(img0)
-            output2 = self.model(img1)
+        # Throw in network
+        output1 = self.model(img0)
+        output2 = self.model(img1)
         
         return label, output1, output2

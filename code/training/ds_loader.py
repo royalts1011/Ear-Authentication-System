@@ -1,8 +1,8 @@
 import torchvision
 from torch.utils.data import DataLoader
 
-from training.ds_siamese_bundler import SiameseNetworkDataset
-import ds_transformations as td
+from training.SiameseBundler import SiameseBundler
+import training.ds_transformations as td
 
 
 def get_dataloader(data_path, indices, transformation, batch_size=32, num_workers=0, should_invert = False):
@@ -41,7 +41,7 @@ def get_siam_dataset(data_path, indices, transformation, should_invert):
                     )
 
     # uses custom dataset class to create a siamese dataset
-    siamese_dataset = SiameseNetworkDataset(
+    siamese_dataset = SiameseBundler(
                         imageFolderDataset = dataset,
                         indices=indices,
                         transform=transformation,
