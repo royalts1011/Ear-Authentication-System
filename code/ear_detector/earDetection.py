@@ -6,7 +6,7 @@
 
 import cv2
 
-earCascade = cv2.CascadeClassifier('Cascades/haarcascade_mcs_rightear.xml')
+earCascade = cv2.CascadeClassifier('haarcascade_mcs_rightear.xml')
 
 #########################################################################
 # SET PARAMETERS
