@@ -1,3 +1,2 @@
-# Need to be written
+# This folder contains everything from creating embeddings from images to using them on different systems.
 
-- acquire_ear_dataset prüfen, welche Version aktuell und auf Ordner ear_detector referenzieren

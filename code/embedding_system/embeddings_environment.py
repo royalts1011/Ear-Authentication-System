@@ -28,11 +28,11 @@ import shutil
 # %%
 class Config():
     DEVICE = get_device()
-    DATASET_DIR = '../dataset/'
-    AUTH_DATASET_DIR = '../auth_dataset/unknown-auth/'
-    MODEL_DIR = './models/ve_g_9997.pt'
+    DATASET_DIR = '../../ear_dataset_example/'
+    AUTH_DATASET_DIR = '../../auth_data_example/unknown-auth/'
+    MODEL_DIR = '../../models/ve_g_margin_2,0.pt'
     is_small_resize = False
-    DATABASE_FOLDER = './embeddings/'
+    DATABASE_FOLDER = '../../embeddings'
     THRESHOLD_VAL = 1.0
     THRESHOLD = 2.0
     a = 0.1
