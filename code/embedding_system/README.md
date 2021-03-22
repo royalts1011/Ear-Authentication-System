@@ -21,7 +21,7 @@ At this point, a better approach would be not to store the least distance of eac
 This would make the system more robust against outliers.
 
 Finally this notebook gives you a list of the 10 closest distances and the associated people.
-
+![Algorithm_Part_1](https://github.com/royalts1011/Ear-Authentication-System/blob/606c9ed8ed35b0197c8f2af0b9e882a01e92b7d6/code/embedding_system/Algorithm_part1.png)
 
 
 # embedding_environment.py
@@ -32,7 +32,7 @@ This script can be executed on any computer that:
 - has installed all the packages we specified
 In contrast to the notebook described before, this script takes the image to be processed on its own. The further processing steps remain the same for the time being.
 However, the previously described list of the 10 closest distances, which belong to 10 different persons, is now used to make a final decision whether the authentication was successful or not.
-
+![Algorithm_Part_2](https://github.com/royalts1011/Ear-Authentication-System/blob/606c9ed8ed35b0197c8f2af0b9e882a01e92b7d6/code/embedding_system/Algorithm_part2.png)
 
 
 
