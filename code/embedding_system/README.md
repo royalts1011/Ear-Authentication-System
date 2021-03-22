@@ -1,2 +1,42 @@
-# This folder contains everything from creating embeddings from images to using them on different systems.
+# create_embedding.ipynb
+This Notebook can be used to transform your dataset of images to Embeddings. 
+- Make sure your dataset has the following strcuture: **dataset/subject/img001.png**.
+- Also make sure that you have created all required folders and set the pathes correctly.
+- You will receive **1 Embedding file for each subject** which contains the vectors/embeddings for every Image inside the subjects folder
+
+
+
+# create_embedding_newperson.ipynb
+Quite simillar to the Notebooke above this Notebooks does pretty the same. The only difference is, that this one is used for a single subject, not for a whole dataset of subjects.
+The reason behind this notebook is that after our system is trained it can also be used for unknown subject. The only thing you need is do create the Embedding File for a new Subject as a form of registration.
+What this notebook does is **creating 1 Embedding file for 1 Subject** while checking if this subject allready exists.
+
+
+
+# embedding_testenvironment.ipynb
+You can use this Notebook to test out and build up the ear_recognition System. Unlike the following python scripts, for this notebook it is required to put at least on picture in the stored folder for **AUTH_DATASET_DIR**.
+
+As a result you receive 1 Embedding. This embedding is now compared with the entire embeddings database. For each person, the smallest distance is stored.
+At this point, a better approach would be not to store the least distance of each person, but to calculate the average of the distances to all embeddings of a person.
+This would make the system more robust against outliers.
+
+Finally this notebook gives you a list of the 10 closest distances and the associated people.
+
+
+
+# embedding_environment.py
+What is still missing from the notebook is now included in this script.
+This script can be executed on any computer that:
+- has a camera
+- has Python version 3.7.7 installed
+- has installed all the packages we specified
+In contrast to the notebook described before, this script takes the image to be processed on its own. The further processing steps remain the same for the time being.
+However, the previously described list of the 10 closest distances, which belong to 10 different persons, is now used to make a final decision whether the authentication was successful or not.
+
+
+
+
+# embedding_environment_pi.py
+Both scripts is literally the same. The pi script has only a few extension to controll LED, LCD, etc. of our builded hardware setup.
+To read more about this toppic, check out the system_pi_setup.pdf.
 
