@@ -9,7 +9,7 @@ class ContrastiveLossFunction(torch.nn.Module):
     """
 
     def __init__(self, margin=2.0):
-        super(ContrastiveLoss, self).__init__()
+        super(ContrastiveLossFunction, self).__init__()
         self.margin = margin
 
 

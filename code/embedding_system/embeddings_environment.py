@@ -43,7 +43,7 @@ class Config():
 # Load the model that will be used to during the authentication process.
 model = torch.load(Config.MODEL_DIR, map_location=torch.device(Config.DEVICE))
 # Specify a set of transformations to be applied to all images during the authentication process.
-transformation = td.get_transform('siamese_valid_and_test', Config.is_small_resize)
+transformation = td.get_transform('valid_and_test', Config.is_small_resize)
 
 
 

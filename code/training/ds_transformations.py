@@ -15,10 +15,8 @@ def get_transform(dict_key, is_small):
 
     # dictionary to access different transformation methods
     transform_dict = {
-        'train': transforms_train(get_resize(is_small=is_small) ),
-        'valid_and_test': transforms_valid_and_test( get_resize(is_small=is_small) ),
-        'siamese' : transforms_siamese( get_resize(is_small=is_small) ),
-        'siamese_valid_and_test' : transforms_siamese_verification( get_resize(is_small=is_small) ),
+        'train' : transforms_train( get_resize(is_small=is_small) ),
+        'valid_and_test' : transforms_valid( get_resize(is_small=is_small) ),
         'size_only' : None
     }
     assert dict_key in transform_dict, "The string "+str(dict_key)+" was not found in dictionary"
@@ -31,33 +29,8 @@ def get_resize(is_small):
     else: return 280, 230
 
 
+# chosen transformations on the training data
 def transforms_train(img_shape):
-    mean_pil = tuple([int(x*255) for x in norm_mean])
-    return transforms.Compose([
-        MyTransforms.RandomScaleWithMaxSize(img_shape, 0.8),
-        MyTransforms.PadToSize(img_shape, mean_pil),
-        transforms.RandomAffine(degrees=15, fillcolor=mean_pil),
-        MyTransforms.MyRandomCrop(crop_ratio=0.1, b_keep_aspect_ratio=True),
-        transforms.Resize(img_shape),
-        #MyTransforms.GaussianBlur(p=0.2, max_radius=4),
-        MyTransforms.AddGaussianNoise(blend_alpha_range=(0., 0.15)),
-        transforms.ColorJitter(brightness=0.2, contrast=0.4, saturation=0.2, hue=0.02),
-        #transforms.RandomHorizontalFlip(),
-        #transforms.Grayscale(3),
-        transforms.ToTensor(),
-        normalize
-        ])
-
-def transforms_valid_and_test(img_shape):
-    return transforms.Compose([
-        transforms.Resize(img_shape),
-        # transforms.Lambda(lambda x: x.convert('RGB')),
-        #transforms.Grayscale(3),
-        transforms.ToTensor(),
-        normalize
-        ])
-
-def transforms_siamese(img_shape):
     return transforms.Compose([
         MyTransforms.RandomScaleWithMaxSize(img_shape, 0.8),
         transforms.RandomAffine(degrees=15),
@@ -69,7 +42,8 @@ def transforms_siamese(img_shape):
         transforms.ToTensor()
         ])
 
-def transforms_siamese_verification( img_shape ):
+# chosen transformations on the valid and test data and for later authentication prozess
+def transforms_valid( img_shape ):
         return transforms.Compose([
             transforms.Resize(img_shape),
             transforms.ToTensor()

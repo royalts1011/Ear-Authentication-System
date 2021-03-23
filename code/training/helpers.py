@@ -6,6 +6,7 @@
 import os
 import torch
 from torch import cuda
+import numpy as np
 
 # method for displaying files with index
 def print_list(list_):
@@ -53,3 +54,12 @@ def cuda_conv(obj):
 def get_device():
     device = torch.device('cuda:0' if cuda.is_available() else 'cpu')
     return device
+
+# return number of trainable parameters
+def get_num_params(model, count_only_trainable=True):
+    def select(p):
+        return p.requires_grad or not count_only_trainable
+
+    model_p = [p for p in model.parameters() if select(p)]
+    num_params = sum([np.prod(p.size()) for p in model_p])
+    return num_params

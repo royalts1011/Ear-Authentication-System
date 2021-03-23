@@ -25,8 +25,6 @@ class Training():
         epochs = []
 
 
-
-
         for epoch in range(0,epochs_):
             acc = 0.0
             loss = 0.0
