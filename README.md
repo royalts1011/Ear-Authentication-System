@@ -11,7 +11,7 @@ The main components are:
 - Make sure Python and Pip is installed. We developed this project using Python 3.7.7, the Raspberry Pi used Python 3.7.3
 
 ## 1. Configure _~/.profile_ in Linux
-- Open terminal and execute `nano ~/.profile` to open and edit file
+- In the terminal execute `nano ~/.profile` to open and edit file
 - Open the _profile_setup.txt_ and copy all lines into the _.profile_ file without deleting the already existing content
 > **Note:** The line `export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3` refers to python3 being installed.
 > In the next step we therefore use pip3 in the commands.
@@ -19,10 +19,11 @@ The main components are:
 ## 2. Virtual Environment
 1. Install virtualenv and virtualenvwrapper for Python: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
 	* `cd ~ && pip3 install virtualenv && pip3 install virtualenvwrapper`
-	> **Note:** You could also install it via normal pip if the _.profile_ refers to _python_ instead _python3_
-2. Create an environment with the python 3.7 version
+	> **Note:** You could also install it via normal pip if the _.profile_ refers to _python_ instead _python3_ 
+3. Create an environment with the corresponding python version (we use 3.7). Make sure to reload the _.profile_ first.
+	* `source ~/.profile`
 	* `mkvirtualenv env_name -p 3.7`
-3. To activate your created virtualenv execute these commands in that order:
+3. To activate your created virtualenv (e.g. upon starting a new terminal) execute these commands in that order:
 	* `source ~/.profile`
 	* `workon env_name`
 	> **Note:** Every time you want to use the environment you need to execute this step 2.3 
