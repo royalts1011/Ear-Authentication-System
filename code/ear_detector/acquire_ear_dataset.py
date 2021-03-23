@@ -11,7 +11,7 @@ import time
 PICTURES  = 80
 STEP = 20
 
-DATASET_DIR = '../dataset'
+STANDARD_DIR = '../dataset'
 GREEN = (0,255,0)
 
 
@@ -77,6 +77,8 @@ def rescale_frame(frame, percent=75):
         is_authentification: boolean if function is used for authentification
 """
 def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, is_authentification=False):
+    # Dataset directory changes if pictures are for temporal existence
+    DATASET_DIR = (STANDARD_DIR, '../auth_dataset')[is_authentification]
 
     print(  "\n [INFO]\n",
         "------------------------------\n",
@@ -97,20 +99,38 @@ def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, is_authentificat
     time.sleep(2.0)
     # open window dimensions
     make_720(cap)
+    
+    ear_detector = cv2.CascadeClassifier('../../cascades/haarcascade_mcs_rightear.xml')
 
-    ear_detector = cv2.CascadeClassifier('haarcascade_mcs_rightear.xml')
+    # Set correct folder path and person's name
+    if is_authentification:
+        '''
+          The ear will be saved temporatily as unknown in a folder unknown-auth
+          as it is used for verification only. (Function call with is_authentification=true)
+          This directory will later be deleted by code in the CALLING script.
+        '''
+        ear_name = 'unknown'
+        appendix = '-auth'
+    else:
+        '''
+            The else-case is for the normal dataset acquiry. A proper name input over the terminal
+            is requested.
+        '''
+        # For each person, enter a new identification name
+        print("The format of names should be consistent. (e.g. 'firstname_lastname' only using first three letters of the last name. --> 'max_mus'")
+        ear_name = input('\n Enter name end press <return> :\t')
+        appendix = ''
 
-    # For each person, enter a new identification name
-    print("The format of names should be consistent. (e.g. 'firstname_lastname' only using first three letters of the last name. --> 'max_mus'")
-    ear_name = input('\n Enter name end press <return> :\t')
 
     if not exists(DATASET_DIR):
         os.mkdir(DATASET_DIR)
 
-    usr_dir = (join(DATASET_DIR, ear_name), join(DATASET_DIR, (ear_name + '-auth')))[is_authentification]
+    usr_dir = join(DATASET_DIR, ear_name + appendix)
     if not exists(usr_dir):
         os.mkdir(usr_dir)
-        
+    
+    print('Directories created! Start movement to expose the ear.')
+
     # Initialize individual sampling ear count
     count = 0
 

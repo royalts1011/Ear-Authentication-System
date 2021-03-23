@@ -2,7 +2,7 @@
 # To add a new markdown cell, type '# %% [markdown]'
 # %%
 import sys
-sys.path.append('../..')
+sys.path.append('..')
 import numpy as np
 
 # PyTorch
