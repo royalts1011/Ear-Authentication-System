@@ -1,0 +1,1 @@
+# This folder contains all embeddings provided by us. Further trained embeddings can be stored here later.

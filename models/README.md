@@ -1,0 +1,1 @@
+# This folder contains all models provided by us, which are already trained. Further trained models can be stored and tested here later.
