@@ -11,7 +11,7 @@ import time
 PICTURES  = 80
 STEP = 20
 
-STANDARD_DIR = '../dataset'
+STANDARD_DIR = '../../ear_dataset'
 GREEN = (0,255,0)
 
 
@@ -78,7 +78,7 @@ def rescale_frame(frame, percent=75):
 """
 def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, is_authentification=False):
     # Dataset directory changes if pictures are for temporal existence
-    DATASET_DIR = (STANDARD_DIR, '../auth_dataset')[is_authentification]
+    DATASET_DIR = (STANDARD_DIR, '../../auth_dataset')[is_authentification]
 
     print(  "\n [INFO]\n",
         "------------------------------\n",
@@ -96,7 +96,7 @@ def capture_ear_images(amount_pic=PICTURES, pic_per_stage=STEP, is_authentificat
         )
 
     cap = cv2.VideoCapture(0)
-    time.sleep(2.0)
+    time.sleep(3.0)
     # open window dimensions
     make_720(cap)
     
