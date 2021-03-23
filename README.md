@@ -23,8 +23,8 @@ The main components are:
 2. Create an environment with the python 3.7 version
 	* `mkvirtualenv env_name -p 3.7`
 3. To activate your created virtualenv execute these commands in that order:
-  * `source ~/.profile`
-  * `workon virtualenvName`
+	* `source ~/.profile`
+	* `workon env_name`
 	> **Note:** Every time you want to use the environment you need to execute this step 2.3 
 4. To exit an environment use `deactivate`
 
