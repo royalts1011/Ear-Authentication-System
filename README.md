@@ -4,19 +4,35 @@ The main components are:
 - Ear Detector with the possibility to acquire a dataset.
 - Ear authentication system.
 
-# How to set up this project.
+# How to set up this project
 
-# 1. Configure .profile in Linux
-- open terminal and use "nano .profile" top open file
-- open the "profile_setup.txt and copy all lines into the .profile file without deleting the already existing content:
-- when ever you want to use this project open terminal first and type: "source .profile"
+## 0. Cloning, Python & Pip
+- Clone the repo. We used Documents as the base folder.
+- Make sure Python and Pip is installed. We developed this project using Python 3.7.7, the Raspberry Pi used Python 3.7.3
 
-# 2. Configure virtual environment for project.
-- Make Sure to have python 3.7.7 installed. Maybe another version works as well but we developed this project using python 3.7.7
-- Install virtualenv for python: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
-- to activate your created virtualenv you can also open a terminal type "source .profile" and afterwords "workon virtualenvName" 
-- To easily set up all required python packages we have used you can use "pip install -r requirements.txt" . You will find 
-the requirements.txt in the repository.
+## 1. Configure _~/.profile_ in Linux
+- In the terminal execute `nano ~/.profile` to open and edit file
+- Open the _profile_setup.txt_ and copy all lines into the _.profile_ file without deleting the already existing content
+> **Note:** The line `export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3` refers to python3 being installed.
+> In the next step we therefore use pip3 in the commands.
+
+## 2. Virtual Environment
+1. Install virtualenv and virtualenvwrapper for Python: https://uoa-eresearch.github.io/eresearch-cookbook/recipe/2014/11/26/python-virtual-env/
+	* `cd ~ && pip3 install virtualenv && pip3 install virtualenvwrapper`
+	> **Note:** You could also install it via normal pip if the _.profile_ refers to _python_ instead _python3_ 
+3. Create an environment with the corresponding python version (we use 3.7). Make sure to reload the _.profile_ first.
+	* `source ~/.profile`
+	* `mkvirtualenv env_name -p 3.7`
+3. To activate your created virtualenv (e.g. upon starting a new terminal) execute these commands in that order:
+	* `source ~/.profile`
+	* `workon env_name`
+	> **Note:** Every time you want to use the environment you need to execute this step 2.3 
+4. To exit an environment use `deactivate`
+
+## 3. Configure the Virtual Environment for the project
+- Navigate to the repository. For the next step **check that you are in the virtual environment!**
+- You will find a _requirements.txt_ file in the repository. To easily set up all required python packages execute following line:
+	* `pip install -r requirements.txt`
 
 
-Working with the project should now be possible. In some places further changes are necessary, for example to use everything on the Rasberry Pi. Detailed instructions can be found in the folders.
+## Working with the general project should now be possible. Detailed Information to the folders can be found in their location respectively.
