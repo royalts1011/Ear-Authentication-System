@@ -30,11 +30,11 @@ MarkupSafe==1.1.1
 matplotlib==3.2.1
 mccabe==0.6.1
 mistune==0.8.4
-nbconvert==5.6.1c
+nbconvert==5.6.1
 nbformat==5.0.6
 notebook==6.0.3
-numpy==1.18.4
-opencv-python==4.5.1.48
+numpy==1.20.1
+opencv-contrib-python==4.1.1.26
 packaging==20.4
 pandas==1.0.3
 pandocfilters==1.4.2
@@ -70,8 +70,6 @@ tensorboardX==2.0
 terminado==0.8.3
 testpath==0.4.4
 threadpoolctl==2.1.0
-% torch @ file:///home/pi/Downloads/torch-1.4.0a0%2Bf43194e-cp37-cp37m-linux_armv7l.whl
-% torchvision @ file:///home/pi/Downloads/torchvision-0.5.0a0%2B9cdc814-cp37-cp37m-linux_armv7l.whl
 tornado==6.0.4
 tqdm==4.45.0
 traitlets==4.3.3
