@@ -49,7 +49,7 @@ The main components are:
 * Clone repo or download the two wheel-files from the following repo. Install both wheels using pip **INSIDE** the virtual environment. https://github.com/sungjuGit/PyTorch-and-Vision-for-Raspberry-Pi-4B
 	* `pip install xxx.whl`
 
-3. Now you can proceed and install the _requirements_pi.txt_ fro this repo. It contains a different packages like _picamera_ or RPi-specifics like _opencv-contrib-python_
+3. Now you can proceed and install the _requirements_pi.txt_ fro this repo. It contains a different packages like _picamera_ or RPi-specifics.
 	* `pip install -r requirements_pi.txt`
 	> **Note:** If you choose to update certain packages (newer may exist) be careful with torch, torchvision and exclude opencv from updates - or only update to a version working on the RPi (not all do). https://piwheels.org/project/opencv-contrib-python/#install
  
@@ -57,3 +57,4 @@ The main components are:
 ## Working with the project should now be possible. Detailed Information to the folders can be found in their location respectively.
 
 > Full install of OpenCV 4: https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/
+> This article from Step 2 contains further links to torch & torchvision versions: https://medium.com/secure-and-private-ai-writing-challenge/a-step-by-step-guide-to-installing-pytorch-in-raspberry-pi-a1491bb80531
