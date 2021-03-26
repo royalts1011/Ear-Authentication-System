@@ -34,7 +34,7 @@ The main components are:
 ## 3. Configure the Virtual Environment for the project. Choose part A _OR_ part B
 
 ### Part A: You are on a Linux PC and NOT the Raspberry Pi
-- Navigate to the repository. For the next step **check that you are in the virtual environment!**
+- Navigate to the repository. For the next step **check that you are IN the virtual environment!**
 - You will find a _requirements.txt_ file in the repository. To easily set up all required python packages execute following line:
 	* `pip install -r requirements.txt`
 
@@ -42,7 +42,7 @@ The main components are:
 > **Note:** This is specifically RPi **4B**, as the torch and torchvision PiWheel was compiled on and build for RPi 4B
 1. For image manipulation and in first line for the Cascade Classifier we need OpenCV on the Raspberry Pi. We need dependencies, triggers and a functioning build. Follow **Step #2 and Step #4a** of this tutorial. Note that the dependencies (Step #2) are done **OUTSIDE** the virtual environment. The opencv installation (Step #4a: `pip install opencv-contrib-python==4.1.0.25`) is done **INSIDE** the virtual environment: https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/
 
-2 We will need certain torch and torchvision dependencies and pre-build wheel files. 
+2. We will need certain torch and torchvision dependencies and pre-build wheel files. 
 * Install dependencies for PyTorch **OUTSIDE** the virtual environment.
 	* `sudo apt install libopenblas-dev libblas-dev m4 cmake cython python3-dev python3-yaml python3-setuptools`
 	> Fetched from https://medium.com/secure-and-private-ai-writing-challenge/a-step-by-step-guide-to-installing-pytorch-in-raspberry-pi-a1491bb80531
