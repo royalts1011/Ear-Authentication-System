@@ -1,9 +1,9 @@
-# This Folder contains all descriptions and files for the Ear-Detector .
+# The ear detector system
 
-1. Setup virtualenv including opencv-python and numpy 
-2. earDetection.py will start the camera and just detect ears
-3. acquire_ear_dataset wants you to enter a name in terminal first.
-    By Pressing enter the Camera waits until your ear is detected.
-    From this moment pictures will be acquired, cropped and saved
-    to folder "dataset". 
+## _earDetection.py_
+    * Start this script for real time object detection without the process of saving images for a dataset.
+    * When running, press `esc` to quit and `p` to save the current bounding box as a _.png_ image
+## _acquire_ear_dataset.py_
+    * Running the script will ask for a name input to save images of the detected object.
+    * The script is also called in _authentication_-mode from the embedding_system. It will then choose name 'unknown' and save images to a 'unknown-auth' folder.
 
