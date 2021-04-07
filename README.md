@@ -11,6 +11,7 @@ The main components are:
 ## 0. Cloning, Python & Pip
 - Clone the repo. We used Documents as the base folder.
 - Make sure Python and Pip is installed. We developed this project using Python 3.7.7, the Raspberry Pi used Python 3.7.3
+- The camera module must be activated in RPi Settings for several scripts in this project
 
 ## 1. Configure _~/.profile_ in Linux
 - In the terminal execute `nano ~/.profile` to open and edit file
