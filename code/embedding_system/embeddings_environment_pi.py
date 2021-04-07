@@ -6,7 +6,7 @@ from PIL import Image
 import glob
 import os
 import shutil
-
+from time import sleep
 
 # PyTorch imports
 import torch
@@ -23,17 +23,23 @@ import training.metrics as M
 import ear_detector.acquire_ear_dataset as a
 
 # Pin imports
+import board
+import digitalio
+import adafruit_character_lcd.character_lcd as character_lcd
 from gpiozero import LED
-import RPi.GPIO as GPIO
-from Adafruit_CharLCD import Adafruit_CharLCD
-import shutil
-import os
-from time import sleep
 
 # instantiate lcd and specify pins
-lcd = Adafruit_CharLCD(rs=26, en=19,
-                       d4=13, d5=6, d6=5, d7=11,
-                       cols=16, lines=2)
+lcd_rs = digitalio.DigitalInOut(board.D26)
+lcd_en = digitalio.DigitalInOut(board.D19)
+lcd_d4 = digitalio.DigitalInOut(board.D13)
+lcd_d5 = digitalio.DigitalInOut(board.D6)
+lcd_d6 = digitalio.DigitalInOut(board.D5)
+lcd_d7 = digitalio.DigitalInOut(board.D11)
+lcd_columns = 16
+lcd_rows = 2
+lcd = character_lcd.Character_LCD_Mono(lcd_rs, lcd_en, lcd_d4, lcd_d5, lcd_d6, lcd_d7, lcd_columns, lcd_rows)
+# lcd = Adafruit_CharLCD(rs=26, en=19, d4=13, d5=6, d6=5, d7=11, cols=16, lines=2)
+
 # initiate LEDs
 led_yellow = LED(4)
 led_green = LED(17)
@@ -94,11 +100,11 @@ try:
     but to calculate the average of the distances to all embeddings of a person.
     This would make the system more robust against outliers.
     """
-    lcd.blink(False)
+    lcd.blink = False
     
     # LCD output
     lcd.clear()
-    lcd.message('Ready to take\nyour ear images')
+    lcd.message = 'Ready to take\nyour ear images'
 
     # Bilder aufnehmen
     led_yellow.blink(on_time=0.5,off_time=0.25)
@@ -109,7 +115,7 @@ try:
     
     # LCD output
     lcd.clear()
-    lcd.message('Verification\nin progress...')
+    lcd.message = 'Verification\nin progress...'
 
 
     result_value = []
@@ -142,7 +148,7 @@ try:
     if (result_value[0] + Config.a) < result_value[1] and result_value[0] <= Config.THRESHOLD_VAL and result_label[0] in Config.AUTHORIZED:
         lcd.clear()
         entry_string = 'Hi ' + result_label[0]
-        lcd.message('Access granted\n'+ entry_string)
+        lcd.message = 'Access granted\n'+ entry_string
 
         print("Access granted! Welcome "  + result_label[0] + "!")
 
@@ -152,7 +158,7 @@ try:
 
     if result_value[0] > Config.THRESHOLD_VAL and result_value[0] < Config.THRESHOLD:
         lcd.clear()
-        lcd.message('Not found -\nNo entry.')
+        lcd.message = 'Not found -\nNo entry.'
         
         print('Cant find authorized Person in Database. Pls try again')
 
@@ -162,7 +168,7 @@ try:
 
     if (result_value[0] + Config.a) >= result_value[1]:
         lcd.clear()
-        lcd.message('Access denied -\nNo entry.')
+        lcd.message = 'Access denied -\nNo entry.'
                 
         print('Verification not clear enough. Access denied. Please try again.')
         led_red.on()
@@ -175,5 +181,6 @@ finally:
     lcd.clear()
 
     # Delete the captured images, as they are no longer needed.
-    shutil.rmtree('../../auth_dataset/')
+    if os.path.exists('../../auth_dataset/'):
+        shutil.rmtree('../../auth_dataset/')
 
