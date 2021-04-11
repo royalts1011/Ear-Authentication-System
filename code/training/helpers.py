@@ -1,27 +1,37 @@
-###################################################
-###################################################
-###    Script to outsource functions
-###################################################
-###################################################
+"""
+
+  Script to outsource (helping) functions
+  
+"""
 import os
 import torch
 from torch import cuda
 import numpy as np
 
-# method for displaying files with index
+
 def print_list(list_):
+    '''
+        Method for displaying a list of files with an enumerated index
+    '''
     fmt = '{:<8}{:<20}'
     print(fmt.format('Index', 'Name'))
     for i, name in enumerate(list_):
         print(fmt.format(i, name))
 
-# removes .DS_Store string from a list
+
 def rm_DSStore(list_):
+    '''
+        Removes .DS_Store string from a list
+        (Apple Mac precautions e.g. when loading all files from a folder)
+    '''
     return list(filter(('.DS_Store').__ne__, list_))
 
-# takes a path input and shows all folders
-# Let's user choose a folder by index
+
 def choose_folder(dataset_path, name='unknown'):
+    '''
+        Takes a path input and shows all folders
+        Let's user choose a folder by index
+    '''
     folders = os.listdir(dataset_path)
     # remove all .DS_Store entries
     folders = rm_DSStore(folders)
@@ -43,20 +53,29 @@ def choose_folder(dataset_path, name='unknown'):
     assert folder_name in folders, 'The name was not found in the given folder: ' + dataset_path
     return folder_name
 
-# converts to cuda if possible
+
 def cuda_conv(obj):
+    '''
+        Converts to cuda if possible
+    '''
     if cuda.is_available():
         return obj.cuda()
     else:
         return obj
 
-# return device (cuda or cpu)
+
 def get_device():
+    '''
+        Return device (cuda or cpu)
+    '''
     device = torch.device('cuda:0' if cuda.is_available() else 'cpu')
     return device
 
-# return number of trainable parameters
+
 def get_num_params(model, count_only_trainable=True):
+    '''
+        Return number of trainable parameters
+    '''
     def select(p):
         return p.requires_grad or not count_only_trainable
 

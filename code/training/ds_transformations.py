@@ -12,6 +12,18 @@ normalize = transforms.Normalize( mean=norm_mean, std=norm_std )
 
 
 def get_transform(dict_key, is_small):
+    '''
+        This method is used to get a pipeline of data transformations/augmentations.
+        
+        Arguments
+        ---------
+        dict_key: A key from the below defined dictionary in order to map to the correct data augmentation strategy
+        is_small: Boolean, which can switch between the two defined sizes in the method get_resize()
+
+        Returns
+        ---------
+        Pipeline of data augmentation strategies
+    '''
 
     # dictionary to access different transformation methods
     transform_dict = {

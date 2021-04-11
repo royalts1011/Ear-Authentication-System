@@ -5,6 +5,7 @@ import csv
 
 
 class Training():
+
     def __init__(
         self,model, optimizer, train_dataloader, loss_contrastive, val_dataloader, THRESHOLD
     ):

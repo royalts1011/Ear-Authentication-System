@@ -42,6 +42,7 @@ The main components are:
 ### Part B: You are on the Raspberry Pi 4B
 > **Note:** This is specifically RPi **4B**, as the torch and torchvision PiWheel was compiled on and build for RPi 4B
 1. For image manipulation and in first line for the Cascade Classifier we need OpenCV on the Raspberry Pi. We need dependencies, triggers and a functioning build. Follow **Step #2 and Step #4a** of this tutorial. Note that the dependencies (Step #2) are done **OUTSIDE** the virtual environment. The opencv installation (Step #4a: `pip install opencv-contrib-python==4.1.0.25`) is done **INSIDE** the virtual environment: https://www.pyimagesearch.com/2019/09/16/install-opencv-4-on-raspberry-pi-4-and-raspbian-buster/
+	> We used the full install of OpenCV 4 (Step #4b) and seemed to have achieved a lower latency in the real time ear detection than with the quick install. Quick isntall does work fine though.
 
 2. We will need certain torch and torchvision dependencies and pre-build wheel files. If you are on another Raspberry Pi version this is the step where you will need to find fitting wheels for your soon to be torch-vision lightning speed car.
 * Install dependencies for PyTorch **OUTSIDE** the virtual environment.

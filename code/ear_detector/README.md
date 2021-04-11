@@ -1,5 +1,3 @@
-# The ear detector system
-
 ## _earDetection.py_
     * Start this script for real time object detection without the process of saving images for a dataset.
     * When running, press `esc` to quit and `p` to save the current bounding box as a _.png_ image
