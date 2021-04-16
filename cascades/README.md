@@ -1,1 +1,1 @@
-# This folder contains the cascade classifiers we used in our project.
+## This folder contains the XML information files used for the Viola-Jones object detection via OpenCV CascadeClassifier
