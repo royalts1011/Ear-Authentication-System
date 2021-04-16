@@ -1,1 +1,1 @@
-##This folder contains all embeddings obtained from the dataset. For each folder of a person in the dataset folders, a *.npy embedding file is created. This data represents the dataset in the following.
+## This folder contains all embeddings obtained from the dataset. For each folder of a person in the dataset folders, a *.npy embedding file is created. This data represents the dataset in the following.
