@@ -23,7 +23,6 @@ import training.metrics as M
 import ear_detector.acquire_ear_dataset as a
 
 
-
 class Config():
     """
     Configuration Class in which all necessary parameters that will be used in the further process are defined.
@@ -86,8 +85,9 @@ img = Image.open(Config.AUTH_DATASET_DIR + 'unknown004.png')
 new_embedding = model(Variable(pipeline(img,transformation))).cpu()
 
 for label in os.listdir(Config.DATABASE_FOLDER):
-    loaded_embedding = np.load(Config.DATABASE_FOLDER+label, allow_pickle=True)
-    tmp = []    
+    if label.endswith(".npy"):
+        loaded_embedding = np.load(Config.DATABASE_FOLDER+label, allow_pickle=True)
+        tmp = []    
     for embedding in loaded_embedding:
         dis = F.pairwise_distance(embedding,new_embedding)
         tmp.append(dis.item())

@@ -125,8 +125,9 @@ try:
     new_embedding = model(Variable(pipeline(img,transformation))).cpu()
 
     for label in os.listdir(Config.DATABASE_FOLDER):
-        loaded_embedding = np.load(Config.DATABASE_FOLDER+label, allow_pickle=True)
-        tmp = []    
+        if label.endswith(".npy"):
+            loaded_embedding = np.load(Config.DATABASE_FOLDER+label, allow_pickle=True)
+            tmp = []    
         for embedding in loaded_embedding:
             dis = F.pairwise_distance(embedding,new_embedding)
             tmp.append(dis.item())
