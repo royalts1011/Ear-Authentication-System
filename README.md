@@ -32,7 +32,7 @@ The main components are:
 	> **Note:** Every time you want to use the environment you need to execute this step 2.3 
 4. To exit an environment use `deactivate`
 
-## 3. Configure the Virtual Environment for the project. Choose part A _OR_ part B
+## 3. Configure the Virtual Environment for the project. <br /> Choose part A _OR_ part B
 
 ### Part A: You are on a Linux PC and NOT the Raspberry Pi
 - Navigate to the repository. For the next step **check that you are IN the virtual environment!**
