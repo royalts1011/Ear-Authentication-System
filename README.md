@@ -13,7 +13,7 @@ The main components are:
 - Make sure Python and Pip is installed. We developed this project using Python 3.7.7, the Raspberry Pi used Python 3.7.3
 - The camera module must be activated in RPi Settings for several scripts in this project
 
-## 1. Configure _~/.profile_ in Linux
+## 1. Configure _~/.profile_ in Linux and RPi
 - In the terminal execute `nano ~/.profile` to open and edit file
 - Open the _profile_setup.txt_ and copy all lines into the _.profile_ file without deleting the already existing content
 > **Note:** The line `export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3` refers to python3 being installed.
